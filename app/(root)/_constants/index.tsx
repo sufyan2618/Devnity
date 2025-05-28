@@ -334,6 +334,49 @@ print("Even numbers: \\(evenNumbers)")
 let sum = numbers.reduce(0, +)
 print("Sum of numbers: \\(sum)")`,
   },
+  php: {
+    id: "php",
+    label: "PHP",
+    logoPath: "/php.png",
+    pistonRuntime: { language: "php", version: "8.2.3" },
+    monacoLanguage: "php",
+    defaultCode: `<?
+    $numbers = [1, 2, 3, 4, 5];
+    // Print original numbers
+    echo "Original numbers: ";
+    print_r($numbers);
+    // Calculate squares
+    $squares = array_map(function($n) { return $n * $n; },
+    $numbers);
+    echo "Squared numbers: ";
+    print_r($squares);
+    // Filter even numbers
+    $evenNumbers = array_filter($numbers, function($n) { return $n %
+    2 == 0; });
+    echo "Even numbers: ";
+    print_r($evenNumbers);`
+  },
+  dart: {
+    id: "dart",
+    label: "Dart",
+    logoPath: "/dart.png",
+    pistonRuntime: { language: "dart", version: "2.19.6" },
+    monacoLanguage: "dart",
+    defaultCode: `// Create array
+    List<int> numbers = [1, 2, 3, 4, 5];
+    // Print original numbers
+    print('Original numbers: $numbers');
+    // Calculate squares
+    List<int
+    squares = numbers.map((e) =>
+    e * e).toList();
+    print('Squared numbers: $squares');
+    // Filter even numbers
+    List<int
+    evenNumbers = numbers.where((e) =>
+    e % 2 == 0).toList();
+    print('Even numbers: $evenNumbers');`
+  }
 };
 
 export const THEMES: Theme[] = [
