@@ -9,6 +9,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon, Code2, Sparkles } from "lucide-reac
 import { useClerk } from "@clerk/nextjs";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/app/Hooks/useMounted";
+import ShareSnippetDialog from "./ShareSnippetDialog";
 
 function EditorPanel() {
   const clerk = useClerk();
@@ -223,6 +224,7 @@ function EditorPanel() {
           </div>
         </div>
       </div>
+      {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />}
       
     </div>
   );

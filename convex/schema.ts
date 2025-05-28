@@ -12,7 +12,7 @@ export default defineSchema({
         lemonSqueezyOrderId: v.optional(v.string()),
     }).index("byUserId", ["userId"]),
 
-    codeExecution: defineTable({
+    codeExecutions: defineTable({
         userId: v.string(),
         code: v.string(),
         language: v.string(),
