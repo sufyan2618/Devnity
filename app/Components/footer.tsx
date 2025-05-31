@@ -1,6 +1,4 @@
 import { Blocks } from "lucide-react";
-import Link from "next/link";
-
 function Footer() {
   return (
     <footer className="relative border-t border-slate-800/60 mt-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
