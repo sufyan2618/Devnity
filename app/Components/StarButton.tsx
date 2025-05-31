@@ -15,9 +15,18 @@ function StarButton({ snippetId }: { snippetId: Id<"snippets"> }) {
   const star = useMutation(api.snippets.starSnippet);
 
   const handleStar = async () => {
-    if (!isSignedIn) return <div>Sign in to star</div>;
+    if (!isSignedIn) return 
     await star({ snippetId });
   };
+
+  if (!isSignedIn) {
+    return (
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-500/10 text-gray-400">
+        <Star className="w-4 h-4" />
+        <span className="text-xs font-medium">{starCount || 0}</span>
+      </div>
+    );
+  }
 
   return (
     <button

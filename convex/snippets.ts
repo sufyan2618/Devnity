@@ -151,7 +151,7 @@ export const getSnippetStarCount = query({
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new Error("Unauthorized");
+      return false;
     }
     const stars = await ctx.db
       .query("stars")
@@ -237,7 +237,7 @@ export const getStarredSnippets = query({
   handler: async (ctx) => { 
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new ConvexError("User is not Authorized");
+      return [];
     }
 
     const stars = await ctx.db
