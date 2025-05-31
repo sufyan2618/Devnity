@@ -48,7 +48,7 @@ export const isSnippetStarred = query({
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new Error("Unauthorized");
+      return false; // User is not authenticated, cannot star snippets
     }
     const star = await ctx.db
       .query("stars")
