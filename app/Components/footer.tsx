@@ -17,27 +17,26 @@ function Footer() {
             </span>
           </div>
           <div className="flex items-center gap-6">
-            <Link 
-              href="/support" 
+            <div  
               className="relative text-slate-400 hover:text-violet-300 transition-all duration-300 font-medium group"
             >
               <span className="relative z-10">Support</span>
               <div className="absolute inset-0 bg-violet-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
-            </Link>
-            <Link 
-              href="/privacy" 
-              className="relative text-slate-400 hover:text-cyan-300 transition-all duration-300 font-medium group"
-            >
+            </div>
+
+
+
+            <div className="relative text-slate-400 hover:text-cyan-300 transition-all duration-300 font-medium group">
+    
               <span className="relative z-10">Privacy</span>
               <div className="absolute inset-0 bg-cyan-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
-            </Link>
-            <Link 
-              href="/terms" 
-              className="relative text-slate-400 hover:text-emerald-300 transition-all duration-300 font-medium group"
-            >
+              </div>
+
+              {/* Terms Section*/}
+              <div className="relative text-slate-400 hover:text-emerald-300 transition-all duration-300 font-medium group">
               <span className="relative z-10">Terms</span>
               <div className="absolute inset-0 bg-emerald-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
-            </Link>
+              </div>
           </div>
         </div>
       </div>
