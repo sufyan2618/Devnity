@@ -66,7 +66,9 @@ function SnippetDetailPage() {
                         <Image
                           src={`/${snippet.language}.png`}
                           alt={`${snippet.language} logo`}
-                          className="w-10 h-10 sm:w-12 sm:h-12 object-contain relative z-10"
+                          className="sm:w-12 sm:h-12 object-contain relative z-10"
+                          width={10}
+                          height={10}
                         />
                       </div>
                     </div>

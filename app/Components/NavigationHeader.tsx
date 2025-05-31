@@ -46,7 +46,7 @@ function NavigationHeader() {
 
             {/* Snippets Link - Hidden on mobile, shown on tablet+ */}
             <Link
-              href="/snippets"
+              href="/"
               className="hidden md:flex relative group items-center gap-2 lg:gap-3 px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg lg:rounded-xl text-slate-300 
               bg-gradient-to-r from-slate-800/80 to-slate-700/80 hover:from-violet-500/20 hover:to-cyan-500/20
               border border-slate-600/50 hover:border-violet-400/50 transition-all duration-500 shadow-lg 
@@ -58,7 +58,7 @@ function NavigationHeader() {
               />
               <Code2 className="w-4 h-4 lg:w-5 lg:h-5 relative z-10 group-hover:rotate-3 transition-transform duration-300 text-violet-400" />
               <span className="text-sm font-semibold relative z-10 group-hover:text-white transition-colors duration-300">
-                Snippets
+                Code Editor
               </span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-cyan-400 group-hover:w-full transition-all duration-500" />
             </Link>

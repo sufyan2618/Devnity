@@ -113,9 +113,11 @@ function ProfileHeader({ userStats, userData, user }: ProfileHeaderProps) {
             
             <div className="relative">
               <Image
-                src={user.imageUrl}
+              src={user?.imageUrl || "/default-avatar.png"}
                 alt="Profile"
-                className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full border-4 border-slate-600/50 group-hover:border-violet-400/50 relative z-10 group-hover:scale-105 transition-all duration-500 shadow-2xl"
+                className="sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full border-4 border-slate-600/50 group-hover:border-violet-400/50 relative z-10 group-hover:scale-105 transition-all duration-500 shadow-2xl"
+                width={20}
+                height={20}
               />
               
               {userData.isPro && (

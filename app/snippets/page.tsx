@@ -140,7 +140,7 @@ function SnippetsPage() {
                   `}
                 >
                   <div className="flex items-center gap-2">
-                    <Image src={`/${lang}.png`} alt={lang} className="w-4 h-4 object-contain" />
+                    <Image src={`/${lang}.png`} alt={lang} className="object-contain" width={4} height={4} />
                     <span className="text-sm font-medium">{lang}</span>
                   </div>
                   {selectedLanguage !== lang && (
