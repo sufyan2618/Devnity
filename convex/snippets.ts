@@ -151,7 +151,7 @@ export const getSnippetStarCount = query({
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      return false;
+      return 0;
     }
     const stars = await ctx.db
       .query("stars")
