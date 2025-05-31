@@ -7,12 +7,15 @@ import { Star } from "lucide-react";
 function StarButton({ snippetId }: { snippetId: Id<"snippets"> }) {
   const { isSignedIn } = useAuth();
 
-  const isStarred = useQuery(api.snippets.isSnippetStarred, { snippetId });
+  const isStarred = useQuery(
+    api.snippets.isSnippetStarred,
+    isSignedIn ? { snippetId } : "skip"
+  );
   const starCount = useQuery(api.snippets.getSnippetStarCount, { snippetId });
   const star = useMutation(api.snippets.starSnippet);
 
   const handleStar = async () => {
-    if (!isSignedIn) return;
+    if (!isSignedIn) return <div>Sign in to star</div>;
     await star({ snippetId });
   };
 
