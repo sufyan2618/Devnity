@@ -7,8 +7,9 @@ import SnippetsPageSkeleton from "./_components/SnippetsPageSkeleton";
 import NavigationHeader from "@/app/Components/NavigationHeader";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { BookOpen, Code, Grid, Layers, Search, Tag, X, Sparkles, Filter } from "lucide-react";
+import { BookOpen, Code, Grid, Layers, Search, X, Sparkles, Filter } from "lucide-react";
 import SnippetCard from "./_components/SnippetCard";
+import Image from "next/image";
 
 function SnippetsPage() {
   const snippets = useQuery(api.snippets.getSnippet);
@@ -139,7 +140,7 @@ function SnippetsPage() {
                   `}
                 >
                   <div className="flex items-center gap-2">
-                    <img src={`/${lang}.png`} alt={lang} className="w-4 h-4 object-contain" />
+                    <Image src={`/${lang}.png`} alt={lang} className="w-4 h-4 object-contain" />
                     <span className="text-sm font-medium">{lang}</span>
                   </div>
                   {selectedLanguage !== lang && (

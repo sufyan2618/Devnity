@@ -7,7 +7,7 @@ import { api } from "../../convex/_generated/api";
 import NavigationHeader from "@/app/Components/NavigationHeader";
 import ProfileHeader from "./_components/ProfileHeader";
 import ProfileHeaderSkeleton from "./_components/ProfileHeaderSkeleton";
-import { ChevronRight, Clock, Code, ListVideo, Loader2, Star, Calendar, Eye, Sparkles, Code2, Play } from "lucide-react";
+import { ChevronRight,  Code, ListVideo, Loader2, Star, Calendar, Eye, Sparkles, Code2, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";

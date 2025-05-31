@@ -1,7 +1,6 @@
 import NavigationHeader from "@/app/Components/NavigationHeader";
 import { ArrowRight, Command, Star, Sparkles, Crown, Zap, Code2 } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 function ProPlanView() {
   return (

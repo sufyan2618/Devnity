@@ -6,12 +6,13 @@ import { api } from "../../../convex/_generated/api";
 import { Id } from "../../../convex/_generated/dataModel";
 import SnippetLoadingSkeleton from "./_components/SnippetLoadingSkeleton";
 import NavigationHeader from "@/app/Components/NavigationHeader";
-import { Clock, Code, MessageSquare, User, Calendar, Eye, Sparkles, Code2 } from "lucide-react";
+import {  Code, MessageSquare, User, Calendar, Eye, Sparkles, Code2 } from "lucide-react";
 import { Editor } from "@monaco-editor/react";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "@/app/(root)/_constants";
 import CopyButton from "./_components/CopyContent";
 import Comments from "./_components/Comments";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 function SnippetDetailPage() {
   const snippetId = useParams().id;
@@ -62,7 +63,7 @@ function SnippetDetailPage() {
                       <div className="absolute inset-0 bg-gradient-to-r from-violet-500/30 via-cyan-500/30 to-emerald-500/30 rounded-2xl blur-lg opacity-0 hover:opacity-100 transition-all duration-500" />
                       <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 ring-2 ring-slate-600/50 shadow-lg">
                         <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 rounded-2xl opacity-50" />
-                        <img
+                        <Image
                           src={`/${snippet.language}.png`}
                           alt={`${snippet.language} logo`}
                           className="w-10 h-10 sm:w-12 sm:h-12 object-contain relative z-10"

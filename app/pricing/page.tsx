@@ -4,7 +4,7 @@ import { api } from "../../convex/_generated/api";
 import ProPlanView from "./_components/ProPlanView";
 import NavigationHeader from "@/app/Components/NavigationHeader";
 import { ENTERPRISE_FEATURES, FEATURES } from "./_constants";
-import { Star, Crown, Sparkles, Zap, Check } from "lucide-react";
+import {  Crown, Sparkles, Zap, Check } from "lucide-react";
 import FeatureCategory from "./_components/FeatureCategory";
 import FeatureItem from "./_components/FeatureItem";
 import { SignedIn, SignedOut } from "@clerk/nextjs";

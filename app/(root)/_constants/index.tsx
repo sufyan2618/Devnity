@@ -1,4 +1,4 @@
-import { Monaco, MonacoDiffEditor } from "@monaco-editor/react";
+import { Monaco} from "@monaco-editor/react";
 import { Theme } from "../../Types/index";
 
 type LanguageConfig = Record<

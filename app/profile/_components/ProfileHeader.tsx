@@ -1,9 +1,10 @@
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
-import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon, Zap, Crown, Sparkles, Calendar } from "lucide-react";
+import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon,  Crown, Sparkles, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { Id } from "../../../convex/_generated/dataModel";
 import { UserResource } from "@clerk/types";
+import Image from "next/image";
 
 interface ProfileHeaderProps {
   userStats: {
@@ -111,7 +112,7 @@ function ProfileHeader({ userStats, userData, user }: ProfileHeaderProps) {
             <div className="absolute inset-0 bg-gradient-to-r from-violet-500/50 via-cyan-500/50 to-emerald-500/50 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse" />
             
             <div className="relative">
-              <img
+              <Image
                 src={user.imageUrl}
                 alt="Profile"
                 className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full border-4 border-slate-600/50 group-hover:border-violet-400/50 relative z-10 group-hover:scale-105 transition-all duration-500 shadow-2xl"
