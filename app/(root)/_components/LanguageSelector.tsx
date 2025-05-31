@@ -6,10 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ChevronDownIcon, Lock, Sparkles, Code } from "lucide-react";
 
-
 function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
-
   const { language, setLanguage } = useCodeEditorStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const currentLanguageObj = LANGUAGE_CONFIG[language];
@@ -20,21 +18,18 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleLanguageSelect = (langId: string) => {
     if (!hasAccess && langId !== "javascript") return;
-
     setLanguage(langId);
     setIsOpen(false);
   };
 
-
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative w-full sm:w-auto" ref={dropdownRef}>
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
@@ -44,8 +39,9 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
         rounded-lg transition-all duration-300 border border-slate-600/50 hover:border-violet-400/50 
         shadow-lg hover:shadow-violet-500/25 backdrop-blur-sm
         ${!hasAccess && language !== "javascript" ? "opacity-50 cursor-not-allowed" : ""}`}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
       >
-        {/* Enhanced hover state bg decorator */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-cyan-500/10 to-violet-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
           aria-hidden="true"
@@ -79,13 +75,22 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-full min-w-[280px] 
-            bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 
-            backdrop-blur-2xl rounded-xl border border-slate-700/50 shadow-2xl shadow-violet-500/10 py-2 z-50"
+            className="
+              absolute top-full left-0 mt-2
+              w-full sm:w-64
+              min-w-0 sm:min-w-[280px]
+              max-w-xs sm:max-w-none
+              z-50
+              bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95
+              backdrop-blur-2xl rounded-xl border border-slate-700/50 shadow-2xl shadow-violet-500/10 py-2
+              overflow-x-auto
+            "
+            role="listbox"
+            tabIndex={-1}
           >
-            {/* Subtle animated border */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-violet-500/20 via-cyan-500/20 to-violet-500/20 opacity-20 blur-sm" />
-            
+            {/* Responsive horizontal bar */}
+            <div className="h-0.5 w-full bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400 my-2 rounded" />
+
             <div className="relative z-10">
               <div className="px-3 pb-2 mb-2 border-b border-slate-700/50">
                 <p className="text-xs font-semibold text-slate-400 flex items-center gap-2">
@@ -94,10 +99,9 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
                 </p>
               </div>
 
-              <div className="max-h-[280px] overflow-y-auto overflow-x-hidden">
+              <div className="max-h-[60vh] overflow-y-auto overflow-x-hidden">
                 {Object.values(LANGUAGE_CONFIG).map((lang, index) => {
                   const isLocked = !hasAccess && lang.id !== "javascript";
-
                   return (
                     <motion.div
                       key={lang.id}
@@ -108,48 +112,51 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
                     >
                       <button
                         className={`
-                        relative w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-lg
-                        transition-all duration-300 overflow-hidden
-                        ${language === lang.id 
-                          ? "bg-gradient-to-r from-cyan-500/20 to-violet-500/20 text-cyan-300 border border-cyan-400/30" 
-                          : isLocked 
-                            ? "text-slate-500 opacity-50" 
-                            : "text-slate-300 hover:bg-gradient-to-r hover:from-slate-700/50 hover:to-slate-600/50"
-                        }
-                      `}
+                          relative w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-lg
+                          transition-all duration-300 overflow-hidden
+                          ${
+                            language === lang.id
+                              ? "bg-gradient-to-r from-cyan-500/20 to-violet-500/20 text-cyan-300 border border-cyan-400/30"
+                              : isLocked
+                              ? "text-slate-500 opacity-50"
+                              : "text-slate-300 hover:bg-gradient-to-r hover:from-slate-700/50 hover:to-slate-600/50"
+                          }
+                        `}
                         onClick={() => handleLanguageSelect(lang.id)}
                         disabled={isLocked}
+                        role="option"
+                        aria-selected={language === lang.id}
                       >
-                        {/* Enhanced bg gradient */}
                         <div
                           className={`absolute inset-0 transition-opacity duration-300 ${
-                            language === lang.id 
-                              ? "bg-gradient-to-r from-cyan-500/10 to-violet-500/10 opacity-100" 
-                              : isLocked 
-                                ? "opacity-0" 
-                                : "bg-gradient-to-r from-violet-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100"
+                            language === lang.id
+                              ? "bg-gradient-to-r from-cyan-500/10 to-violet-500/10 opacity-100"
+                              : isLocked
+                              ? "opacity-0"
+                              : "bg-gradient-to-r from-violet-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100"
                           }`}
                         />
 
                         <div
                           className={`
-                           relative size-8 rounded-lg p-1.5 transition-all duration-300
-                           ${language === lang.id 
-                             ? "bg-gradient-to-br from-cyan-500/20 to-violet-500/20 shadow-lg" 
-                             : isLocked 
-                               ? "bg-gradient-to-br from-slate-700/30 to-slate-600/30" 
-                               : "bg-gradient-to-br from-slate-700/50 to-slate-600/50 group-hover:from-violet-500/10 group-hover:to-cyan-500/10"
-                           }
-                           ${!isLocked ? "group-hover:scale-110" : ""}
-                         `}
+                            relative size-8 rounded-lg p-1.5 transition-all duration-300
+                            ${
+                              language === lang.id
+                                ? "bg-gradient-to-br from-cyan-500/20 to-violet-500/20 shadow-lg"
+                                : isLocked
+                                ? "bg-gradient-to-br from-slate-700/30 to-slate-600/30"
+                                : "bg-gradient-to-br from-slate-700/50 to-slate-600/50 group-hover:from-violet-500/10 group-hover:to-cyan-500/10"
+                            }
+                            ${!isLocked ? "group-hover:scale-110" : ""}
+                          `}
                         >
                           <div
                             className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
-                              language === lang.id 
-                                ? "bg-gradient-to-br from-cyan-400/20 to-violet-400/20 opacity-100" 
-                                : isLocked 
-                                  ? "opacity-0" 
-                                  : "bg-gradient-to-br from-violet-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100"
+                              language === lang.id
+                                ? "bg-gradient-to-br from-cyan-400/20 to-violet-400/20 opacity-100"
+                                : isLocked
+                                ? "opacity-0"
+                                : "bg-gradient-to-br from-violet-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100"
                             }`}
                           />
                           <Image
@@ -164,13 +171,14 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
                           )}
                         </div>
 
-                        <span className={`flex-1 text-left transition-colors duration-300 font-medium relative z-10 ${
-                          !isLocked ? "group-hover:text-white" : ""
-                        }`}>
+                        <span
+                          className={`flex-1 text-left transition-colors duration-300 font-medium relative z-10 ${
+                            !isLocked ? "group-hover:text-white" : ""
+                          }`}
+                        >
                           {lang.label}
                         </span>
 
-                        {/* Active language glow effect */}
                         {language === lang.id && (
                           <motion.div
                             className="absolute inset-0 border border-cyan-400/30 rounded-lg shadow-lg shadow-cyan-500/25"
@@ -191,7 +199,6 @@ function LanguageSelector({ hasAccess }: { hasAccess: boolean }) {
                           )
                         )}
 
-                        {/* Hover glow line */}
                         {!isLocked && (
                           <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-400 group-hover:w-full transition-all duration-300" />
                         )}

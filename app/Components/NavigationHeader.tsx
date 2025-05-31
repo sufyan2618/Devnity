@@ -69,7 +69,7 @@ function NavigationHeader() {
             
             {/* Mobile Snippets Link */}
             <Link
-              href="/snippets"
+              href="/"
               className="md:hidden relative group p-2 rounded-lg text-slate-300 
               bg-gradient-to-r from-slate-800/80 to-slate-700/80 hover:from-violet-500/20 hover:to-cyan-500/20
               border border-slate-600/50 hover:border-violet-400/50 transition-all duration-300 shadow-lg 

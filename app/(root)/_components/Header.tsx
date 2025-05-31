@@ -2,7 +2,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "../../../convex/_generated/api";
 import Link from "next/link";
-import { Blocks, Code2, Sparkles,} from "lucide-react";
+import { Blocks, Code2, Sparkles, } from "lucide-react";
 import { SignedIn } from "@clerk/nextjs";
 import ThemeSelector from "./ThemeSelector";
 import LanguageSelector from "./LanguageSelector";
@@ -21,7 +21,7 @@ async function Header() {
     <div className="relative z-10">
       {/* Ambient glow effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-cyan-500/5 to-violet-500/5 blur-3xl" />
-      
+
       <div
         className="relative flex flex-col lg:flex-row items-center lg:justify-between justify-center 
         bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-2xl 
@@ -30,7 +30,7 @@ async function Header() {
       >
         {/* Subtle animated border */}
         <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-r from-violet-500/20 via-cyan-500/20 to-violet-500/20 opacity-0 hover:opacity-100 transition-opacity duration-700 blur-sm" />
-        
+
         {/* Mobile/Tablet Header */}
         <div className="flex items-center justify-between w-full lg:hidden relative z-10">
           <Link href="/" className="flex items-center gap-3 group relative">
@@ -51,7 +51,7 @@ async function Header() {
 
             <div className="flex flex-col">
               <span className="block text-lg sm:text-xl font-bold bg-gradient-to-r from-violet-400 via-cyan-300 to-violet-400 text-transparent bg-clip-text tracking-tight">
-                CodeCraft
+                Sufi Codes
               </span>
               <span className="hidden sm:block text-xs text-slate-400 font-medium tracking-wide">
                 Interactive Code Editor
@@ -167,7 +167,10 @@ async function Header() {
         <div className="hidden lg:flex items-center gap-5 relative z-10">
           <div className="flex items-center gap-4 p-2 rounded-xl bg-slate-800/50 border border-slate-700/50">
             <ThemeSelector />
-            <LanguageSelector hasAccess={Boolean(convexUser?.isPro)} />
+            <div className="relative w-full sm:w-auto">
+              <LanguageSelector hasAccess={Boolean(convexUser?.isPro)} />
+            </div>
+  
           </div>
 
           {!convexUser?.isPro && (
