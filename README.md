@@ -9,7 +9,7 @@
 
 ## Overview
 
-**Sufi_Codes** is a modern, responsive, and feature-rich web-based code editor built with [Next.js](https://nextjs.org), Tailwind CSS, and Convex. It offers an interactive coding environment with real-time editing, sharing, comments, and a beautiful, accessible UI. Designed for developers who want a seamless, collaborative, and social code editing experience.
+**Sufi_Codes** is a modern, responsive, beautiful and feature-rich web-based code editor built with [Next.js](https://nextjs.org), Tailwind CSS, and Convex. It offers an interactive coding environment with real-time editing, sharing, comments, and a beautiful, accessible UI. Designed for developers who want a seamless, collaborative, and social code editing experience.
 
 ---
 
