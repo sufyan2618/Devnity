@@ -68,9 +68,10 @@ export async function POST(request: NextRequest) {
             originalError: error
         });
 
-    } catch (error: any) { // Catch any error and log it
+    } catch (error) { // Catch any error and log it
+        const err = error as Error;
         return NextResponse.json(
-            { error: 'Failed to correct code', details: error.message || 'Unknown error' },
+            { error: 'Failed to correct code', details: err.message || 'Unknown error' },
             { status: 500 }
         );
     }
