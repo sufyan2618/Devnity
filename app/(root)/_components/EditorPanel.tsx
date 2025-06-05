@@ -10,7 +10,6 @@ import { useClerk } from "@clerk/nextjs";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/app/Hooks/useMounted";
 import ShareSnippetDialog from "./ShareSnippetDialog";
-import ErrorCorrection from "@/app/Components/ErrorCorrection";
 
 function EditorPanel() {
   const clerk = useClerk();
