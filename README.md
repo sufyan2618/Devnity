@@ -1,4 +1,4 @@
-# Sufi_Codes – Interactive Code Editor
+# Devnity – Interactive Code Editor
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-blue?logo=next.js&logoColor=white)](https://nextjs.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-blue?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
@@ -9,7 +9,7 @@
 
 ## Overview
 
-**Sufi_Codes** is a modern, responsive, beautiful and feature-rich web-based code editor built with [Next.js](https://nextjs.org), Tailwind CSS, and Convex. It offers an interactive coding environment with real-time editing, sharing, comments, and a beautiful, accessible UI. Designed for developers who want a seamless, collaborative, and social code editing experience.
+**Devnity** is a modern, responsive, beautiful and feature-rich web-based code editor built with [Next.js](https://nextjs.org), Tailwind CSS, and Convex. It offers an interactive coding environment with real-time editing, sharing, comments, and a beautiful, accessible UI. Designed for developers who want a seamless, collaborative, and social code editing experience.
 
 ---
 
@@ -37,8 +37,8 @@
 
 1. **Clone the repository:**
     ```
-    git clone https://github.com/yourusername/codecraft.git
-    cd codecraft
+    git clone https://github.com/yourusername/Devnity.git
+    cd Devnity
     ```
 
 2. **Install dependencies:**
@@ -120,4 +120,4 @@ This project is licensed under the MIT License.
 
 ---
 
-_Made with ❤️ by the CodeCraft Team_
+_Made with ❤️ by the Devity Team
