@@ -5,9 +5,10 @@ import { AlertTriangle, CheckCircle, Clock, Copy, Terminal, Play, Zap } from "lu
 import { useState } from "react";
 import RunningCodeSkeleton from "./RunningCodeSkeleton";
 import { motion } from "framer-motion";
+import ErrorCorrection from "../../Components/ErrorCorrection";
 
 function OutputPanel() {
-  const { output, error, isRunning } = useCodeEditorStore();
+  const { output, error, isRunning, language } = useCodeEditorStore();
   const [isCopied, setIsCopied] = useState(false);
 
   const hasContent = error || output;
@@ -46,7 +47,7 @@ function OutputPanel() {
               </p>
             </div>
           </div>
-
+          <ErrorCorrection error={error} language={language} />
           {hasContent && (
             <motion.button
               whileHover={{ scale: 1.02 }}

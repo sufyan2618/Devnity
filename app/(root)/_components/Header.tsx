@@ -51,7 +51,7 @@ async function Header() {
 
             <div className="flex flex-col">
               <span className="block text-lg sm:text-xl font-bold bg-gradient-to-r from-violet-400 via-cyan-300 to-violet-400 text-transparent bg-clip-text tracking-tight">
-                Sufi Codes
+                Devnity
               </span>
               <span className="hidden sm:block text-xs text-slate-400 font-medium tracking-wide">
                 Interactive Code Editor
@@ -85,7 +85,7 @@ async function Header() {
 
             <div className="flex flex-col">
               <span className="block text-xl font-bold bg-gradient-to-r from-violet-400 via-cyan-300 to-violet-400 text-transparent bg-clip-text tracking-tight">
-                Sufi Codes
+                Devnity
               </span>
               <span className="block text-xs text-slate-400 font-medium tracking-wide">
                 Interactive Code Editor

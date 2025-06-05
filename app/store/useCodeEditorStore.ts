@@ -2,8 +2,6 @@ import { create } from "zustand";
 import { CodeEditorState } from "../Types";
 import { LANGUAGE_CONFIG } from "../(root)/_constants";
 
-
-
 const getInitialState = () => {
     if(typeof window == "undefined"){
         return {
@@ -38,6 +36,15 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
             return get().editor?.getValue() || "";
         },
 
+        setCode: (code: string) => {
+            const { editor, language } = get();
+            if (editor) {
+                editor.setValue(code);
+                // Save to localStorage
+                localStorage.setItem(`editor-code-${language}`, code);
+            }
+        },
+
         setEditor: (editor) => {
             const savedCode = localStorage.getItem("editor-code-" + get().language) || "";
             if(savedCode) {
@@ -45,14 +52,17 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
             }
             set({ editor });
         },
+
         setTheme: (theme: string) => {
             localStorage.setItem("editor-theme", theme);
             set({ theme });
         },
+
         setFontSize: (fontSize: number) => {
             localStorage.setItem("editor-font-size", fontSize.toString());
             set({ fontSize });
-            },
+        },
+
         setLanguage: (language: string) => {
             const currentCode = get().editor?.getValue() || "";
             if(currentCode)
@@ -62,18 +72,19 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
             localStorage.setItem("editor-language", language);
             set({ language, output: "", error: "" });
         },
+
         runCode: async () => {
-            const{language, getCode } = get();
+            const { language, getCode } = get();
             const code = getCode();
             if(!code) {
                 set({ error: "Please enter some code to run." });
                 return;
             }
-            set({isRunning: true, output: "", error: "" });
+            set({ isRunning: true, output: "", error: "" });
 
             try {
                 const runtime = LANGUAGE_CONFIG[language]?.pistonRuntime;
-                const response = await fetch("https://emkc.org/api/v2/piston/execute",{
+                const response = await fetch("https://emkc.org/api/v2/piston/execute", {
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -81,59 +92,95 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
                     body: JSON.stringify({
                         language: runtime.language,
                         version: runtime.version,
-                        files: [{content: code}],
+                        files: [{ content: code }],
                     })
-                })
+                });
+
                 const data = await response.json();
                 console.log("Piston API response:", data);
 
-                //this if check is for API errors
+                // Check for API errors
                 if(data.message) {
-                    set({ error: data.message });
+                    set({ 
+                        error: data.message, 
+                        isRunning: false,
+                        executionResult: {
+                            code,
+                            output: "",
+                            error: data.message
+                        }
+                    });
                     return;
                 }
 
-                if(data.complile && data.complile.code !== 0) {
-                    const error =  data.complile.stderr || data.complile.output || "Unknown compilation error";
-                    set({ error: error, isRunning: false, executionResult: {
-                        code,
-                        output: "",
-                        error
-                    } });
+                // Fixed typo: compile instead of complile
+                if(data.compile && data.compile.code !== 0) {
+                    const error = data.compile.stderr || data.compile.output || "Unknown compilation error";
+                    set({ 
+                        error: error, 
+                        isRunning: false, 
+                        executionResult: {
+                            code,
+                            output: "",
+                            error
+                        } 
+                    });
                     return;
                 }
 
                 if(data.run && data.run.code !== 0) {
                     const error = data.run.stderr || data.run.output || "Unknown runtime error";
-                    set({ error: error, isRunning: false, executionResult: {
-                        code,
-                        output: "",
-                        error
-                    } });
+                    set({ 
+                        error: error, 
+                        isRunning: false, 
+                        executionResult: {
+                            code,
+                            output: "",
+                            error
+                        } 
+                    });
                     return;
                 }
+
                 const output = data.run.output || "No output";
-                set({ output, isRunning: false, executionResult: {
-                    code,
-                    output,
-                    error: null
-                } });  
+                set({ 
+                    output, 
+                    isRunning: false, 
+                    executionResult: {
+                        code,
+                        output,
+                        error: null
+                    } 
+                });  
                 
             } catch (error) {
                 console.error("Error running code:", error);
-                set({ error: "Failed to run code. Please try again later.", isRunning: false, executionResult: {
-                    code,
-                    output: "",
-                    error: "Failed to run code. Please try again later."
-                    } });
-                
+                const errorMessage = "Failed to run code. Please try again later.";
+                set({ 
+                    error: errorMessage, 
+                    isRunning: false, 
+                    executionResult: {
+                        code,
+                        output: "",
+                        error: errorMessage
+                    } 
+                });
+            } finally {
+                set({ isRunning: false });
             }
-            finally{
-                set({isRunning: false});
-            }
+        },
 
+        // New method for clearing errors (useful for AI correction)
+        clearError: () => {
+            set({ error: "" });
+        },
+        newMethod: () => {
+            
+        },
+        // New method for updating execution state
+        setExecutionState: (state: { output?: string; error?: string; isRunning?: boolean }) => {
+            set(state);
         }
-
     };
 });
 

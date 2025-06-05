@@ -101,7 +101,7 @@ console.log("Body preview:", body.substring(0, 100));
       try {
         await ctx.runMutation(api.users.syncUser, {
           userId: id,
-          email,
+          email,  
           name,
         });
       } catch (error) {

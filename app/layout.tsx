@@ -65,8 +65,8 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Sufi Codes",
-      url: "https://suficodes.com",
+      name: "Devnity",
+      url: "https://devnity.com",
     },
   ],
   description: "Sufi_Codes is a powerful online code editor and snippet management tool that allows developers to write, share, and execute code snippets in various programming languages. With features like AI code assistance, code collaboration, and real-time execution, Sufi_Codes enhances your coding experience and productivity.",

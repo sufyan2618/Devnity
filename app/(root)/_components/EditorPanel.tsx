@@ -10,11 +10,12 @@ import { useClerk } from "@clerk/nextjs";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/app/Hooks/useMounted";
 import ShareSnippetDialog from "./ShareSnippetDialog";
+import ErrorCorrection from "@/app/Components/ErrorCorrection";
 
 function EditorPanel() {
   const clerk = useClerk();
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
-  const { language, theme, fontSize, editor, setFontSize, setEditor } = useCodeEditorStore();
+  const { language, theme, error, fontSize, editor, setFontSize, setEditor } = useCodeEditorStore();
   const mounted = useMounted();
 
 
@@ -106,7 +107,6 @@ function EditorPanel() {
                 </span>
               </div>
             </div>
-
             {/* Refresh Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
