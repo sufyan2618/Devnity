@@ -25,7 +25,7 @@ async function Header() {
       <div
         className="relative flex flex-col lg:flex-row items-center lg:justify-between justify-center 
         bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-2xl 
-        p-4 sm:p-6 mb-4 rounded-xl lg:rounded-2xl border border-slate-700/50 shadow-2xl shadow-violet-500/10 
+        p-2 sm:p-3 mb-4 rounded-xl lg:rounded-2xl border border-slate-700/50 shadow-2xl shadow-violet-500/10 
         space-y-4 lg:space-y-0"
       >
         {/* Subtle animated border */}
@@ -50,7 +50,7 @@ async function Header() {
             </div>
 
             <div className="flex flex-col">
-              <span className="block text-lg sm:text-xl font-bold bg-gradient-to-r from-violet-400 via-cyan-300 to-violet-400 text-transparent bg-clip-text tracking-tight">
+              <span className="block text-base sm:text-lg font-bold bg-gradient-to-r from-violet-400 via-cyan-300 to-violet-400 text-transparent bg-clip-text tracking-tight">
                 Devnity
               </span>
               <span className="hidden sm:block text-xs text-slate-400 font-medium tracking-wide">
@@ -66,21 +66,21 @@ async function Header() {
         </div>
 
         {/* Desktop Header */}
-        <div className="hidden lg:flex items-center gap-8 relative z-10">
-          <Link href="/" className="flex items-center gap-4 group relative">
+        <div className="hidden lg:flex items-center gap-4 relative z-10">
+          <Link href="/" className="flex items-center gap-2 group relative">
             {/* Enhanced logo hover effect */}
             <div
-              className="absolute -inset-3 bg-gradient-to-r from-violet-500/30 via-cyan-500/30 to-violet-500/30 rounded-2xl opacity-0 
+              className="absolute -inset-3 bg-gradient-to-r from-violet-500/30 via-cyan-500/30 to-violet-500/30 rounded-xl opacity-0 
                 group-hover:opacity-100 transition-all duration-700 blur-2xl animate-pulse"
             />
 
             {/* Enhanced logo */}
             <div
-              className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 p-3 rounded-2xl ring-2
+              className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 p-3 rounded-xl ring-2
               ring-slate-600/50 group-hover:ring-violet-400/50 transition-all duration-500 shadow-lg group-hover:shadow-violet-500/25"
             >
               <Blocks className="size-7 text-violet-400 transform -rotate-6 group-hover:rotate-0 transition-transform duration-700 drop-shadow-lg" />
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
             <div className="flex flex-col">
@@ -97,7 +97,7 @@ async function Header() {
           <nav className="flex items-center space-x-2">
             <Link
               href="/snippets"
-              className="relative group flex items-center gap-3 px-5 py-2.5 rounded-xl text-slate-300 
+              className="relative group flex items-center gap-3 px-5 py-2.5 rounded-lg  text-slate-300 
                 bg-gradient-to-r from-slate-800/80 to-slate-700/80 hover:from-violet-500/20 hover:to-cyan-500/20
                 border border-slate-600/50 hover:border-violet-400/50 transition-all duration-500 shadow-lg 
                 hover:shadow-violet-500/25 overflow-hidden backdrop-blur-sm"
@@ -144,7 +144,7 @@ async function Header() {
 
             <SignedIn>
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-lg blur-lg opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-sm blur-lg opacity-50" />
                 <RunButton />
               </div>
             </SignedIn>

@@ -56,7 +56,7 @@ function EditorPanel() {
       {/* Ambient glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-cyan-500/5 to-violet-500/5 blur-3xl" />
       
-      <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-slate-700/50 shadow-2xl shadow-violet-500/10 p-4 sm:p-6">
+      <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-slate-700/50 shadow-2xl shadow-violet-500/10 p-2 sm:p-3">
         
         {/* Subtle animated border */}
         <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-r from-violet-500/20 via-cyan-500/20 to-violet-500/20 opacity-0 hover:opacity-100 transition-opacity duration-700 blur-sm" />

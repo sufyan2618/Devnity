@@ -17,7 +17,6 @@ function SnippetsPage() {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [view, setView] = useState<"grid" | "list">("grid");
 
-  // loading state
   if (snippets === undefined) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -47,30 +46,29 @@ function SnippetsPage() {
 
       {/* Ambient background effects */}
       <div className="fixed inset-0 bg-gradient-to-br from-violet-500/5 via-cyan-500/5 to-emerald-500/5 blur-3xl pointer-events-none" />
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Hero Section */}
-        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        {/* Compact Hero Section */}
+        <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
             bg-gradient-to-r from-violet-500/10 via-cyan-500/10 to-emerald-500/10 
-            border border-violet-400/20 text-sm text-slate-300 mb-6 backdrop-blur-sm"
+            border border-violet-400/20 text-sm text-slate-300 mb-4 backdrop-blur-sm"
           >
-            <BookOpen className="w-4 h-4 text-violet-400" />
+            <BookOpen className="w-3 h-3 text-violet-400" />
             Community Code Library
-            <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
+            <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
           </motion.div>
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold 
             bg-gradient-to-r from-violet-400 via-cyan-300 to-emerald-400 
-            text-transparent bg-clip-text mb-6 leading-tight"
+            text-transparent bg-clip-text mb-3 leading-tight"
           >
             Discover & Share Code Snippets
           </motion.h1>
@@ -79,49 +77,48 @@ function SnippetsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-lg sm:text-xl text-slate-400 mb-8 leading-relaxed"
+            className="text-base sm:text-lg text-slate-400 mb-4 leading-relaxed"
           >
             Explore a curated collection of code snippets from the community
           </motion.p>
         </div>
 
-        {/* Filters Section */}
-        <div className="relative max-w-6xl mx-auto mb-8 sm:mb-12 space-y-4 sm:space-y-6">
-          {/* Search Bar */}
+        {/* Compact Filters Section */}
+        <div className="relative max-w-6xl mx-auto mb-6 space-y-3 sm:space-y-4">
+          {/* Compact Search Bar */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className="relative group"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-cyan-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-            <div className="relative bg-gradient-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-slate-600/50 shadow-2xl shadow-violet-500/10">
+            <div className="relative bg-gradient-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-2xl rounded-lg border border-slate-600/50 shadow-lg">
               <div className="flex items-center">
-                <Search className="absolute left-4 sm:left-6 w-5 h-5 text-violet-400" />
+                <Search className="absolute left-3 sm:left-4 w-4 h-4 text-violet-400" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search snippets by title, language, or author..."
-                  className="w-full pl-12 sm:pl-16 pr-4 sm:pr-6 py-4 sm:py-5 bg-transparent text-white
-                    placeholder:text-slate-400 focus:outline-none text-sm sm:text-base"
+                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 bg-transparent text-white
+                    placeholder:text-slate-400 focus:outline-none text-sm"
                 />
               </div>
             </div>
           </motion.div>
 
-          {/* Filters Bar */}
+          {/* Compact Filters Bar */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-col lg:flex-row gap-4 lg:items-center"
+            className="flex flex-col lg:flex-row gap-3 lg:items-center"
           >
             {/* Language Filters */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <div className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-slate-800/80 to-slate-700/80 rounded-lg border border-slate-600/50 backdrop-blur-sm">
-                <Filter className="w-4 h-4 text-cyan-400" />
-                <span className="text-sm font-medium text-slate-300">Languages:</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-slate-800/80 to-slate-700/80 rounded-lg border border-slate-600/50 backdrop-blur-sm">
+                <Filter className="w-3 h-3 text-cyan-400" />
+                <span className="text-xs font-medium text-slate-300">Languages:</span>
               </div>
               
               {popularLanguages.map((lang) => (
@@ -131,21 +128,18 @@ function SnippetsPage() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedLanguage(lang === selectedLanguage ? null : lang)}
                   className={`
-                    group relative px-3 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm
+                    group relative px-2.5 py-1.5 rounded-lg transition-all duration-300 backdrop-blur-sm
                     ${
                       selectedLanguage === lang
-                        ? "text-violet-300 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 border-2 border-violet-400/50 shadow-lg shadow-violet-500/25"
+                        ? "text-violet-300 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 border border-violet-400/50 shadow-lg"
                         : "text-slate-400 hover:text-slate-300 bg-gradient-to-r from-slate-800/80 to-slate-700/80 hover:from-slate-700/80 hover:to-slate-600/80 border border-slate-600/50 hover:border-slate-500/50"
                     }
                   `}
                 >
-                  <div className="flex items-center gap-2">
-                    <Image src={`/${lang}.png`} alt={lang} className="object-contain" width={4} height={4} />
-                    <span className="text-sm font-medium">{lang}</span>
+                  <div className="flex items-center gap-1.5">
+                    <Image src={`/${lang}.png`} alt={lang} className="object-contain" width={12} height={12} />
+                    <span className="text-xs font-medium">{lang}</span>
                   </div>
-                  {selectedLanguage !== lang && (
-                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 to-cyan-400 group-hover:w-full transition-all duration-300" />
-                  )}
                 </motion.button>
               ))}
 
@@ -165,8 +159,8 @@ function SnippetsPage() {
             </div>
 
             {/* Results & View Toggle */}
-            <div className="flex items-center justify-between lg:ml-auto gap-4">
-              <span className="text-sm text-slate-500 font-medium">
+            <div className="flex items-center justify-between lg:ml-auto gap-3">
+              <span className="text-xs text-slate-500 font-medium">
                 {filteredSnippets.length} snippet{filteredSnippets.length !== 1 ? 's' : ''} found
               </span>
 
@@ -174,34 +168,34 @@ function SnippetsPage() {
               <div className="flex items-center gap-1 p-1 bg-gradient-to-r from-slate-800/80 to-slate-700/80 rounded-lg border border-slate-600/50 backdrop-blur-sm">
                 <button
                   onClick={() => setView("grid")}
-                  className={`p-2 rounded-md transition-all duration-300 ${
+                  className={`p-1.5 rounded-md transition-all duration-300 ${
                     view === "grid"
                       ? "bg-gradient-to-r from-violet-500/20 to-cyan-500/20 text-violet-400 shadow-lg"
                       : "text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
                   }`}
                 >
-                  <Grid className="w-4 h-4" />
+                  <Grid className="w-3 h-3" />
                 </button>
                 <button
                   onClick={() => setView("list")}
-                  className={`p-2 rounded-md transition-all duration-300 ${
+                  className={`p-1.5 rounded-md transition-all duration-300 ${
                     view === "list"
                       ? "bg-gradient-to-r from-violet-500/20 to-cyan-500/20 text-violet-400 shadow-lg"
                       : "text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
                   }`}
                 >
-                  <Layers className="w-4 h-4" />
+                  <Layers className="w-3 h-3" />
                 </button>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Snippets Grid */}
+        {/* Compact Snippets Grid */}
         <motion.div
-          className={`grid gap-4 sm:gap-6 ${
+          className={`grid gap-3 sm:gap-4 ${
             view === "grid"
-              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
               : "grid-cols-1 max-w-4xl mx-auto"
           }`}
           layout
@@ -213,7 +207,7 @@ function SnippetsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
                 <SnippetCard snippet={snippet} />
               </motion.div>
@@ -221,49 +215,42 @@ function SnippetsPage() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Empty State */}
+        {/* Compact Empty State */}
         {filteredSnippets.length === 0 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative max-w-lg mx-auto mt-16 sm:mt-20"
+            className="relative max-w-lg mx-auto mt-8"
           >
-            <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-2xl rounded-2xl border border-slate-600/50 p-8 sm:p-12 text-center shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-cyan-500/5 to-emerald-500/5 rounded-2xl" />
-              
-              <div className="relative z-10">
-                <div
-                  className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl 
-                  bg-gradient-to-br from-slate-700/50 to-slate-600/50 border border-slate-600/50 mb-6 shadow-lg"
-                >
-                  <Code className="w-8 h-8 sm:w-10 sm:h-10 text-slate-400" />
-                </div>
-                
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">No snippets found</h3>
-                <p className="text-slate-400 mb-6 leading-relaxed">
-                  {searchQuery || selectedLanguage
-                    ? "Try adjusting your search query or filters"
-                    : "Be the first to share a code snippet with the community"}
-                </p>
-                
-                {(searchQuery || selectedLanguage) && (
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => {
-                      setSearchQuery("");
-                      setSelectedLanguage(null);
-                    }}
-                    className="inline-flex items-center gap-2 px-6 py-3 
-                    bg-gradient-to-r from-violet-500/80 to-cyan-500/80 hover:from-violet-400/90 hover:to-cyan-400/90
-                    text-white rounded-xl border border-violet-400/30 hover:border-violet-400/60
-                    transition-all duration-300 shadow-lg hover:shadow-violet-500/25 font-medium"
-                  >
-                    <X className="w-4 h-4" />
-                    Clear all filters
-                  </motion.button>
-                )}
+            <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-2xl rounded-xl border border-slate-600/50 p-6 text-center shadow-xl">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700/50 to-slate-600/50 border border-slate-600/50 mb-4 shadow-lg">
+                <Code className="w-6 h-6 text-slate-400" />
               </div>
+              
+              <h3 className="text-lg font-bold text-white mb-2">No snippets found</h3>
+              <p className="text-slate-400 mb-4 leading-relaxed text-sm">
+                {searchQuery || selectedLanguage
+                  ? "Try adjusting your search query or filters"
+                  : "Be the first to share a code snippet with the community"}
+              </p>
+              
+              {(searchQuery || selectedLanguage) && (
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedLanguage(null);
+                  }}
+                  className="inline-flex items-center gap-2 px-4 py-2 
+                  bg-gradient-to-r from-violet-500/80 to-cyan-500/80 hover:from-violet-400/90 hover:to-cyan-400/90
+                  text-white rounded-lg border border-violet-400/30 hover:border-violet-400/60
+                  transition-all duration-300 shadow-lg hover:shadow-violet-500/25 font-medium text-sm"
+                >
+                  <X className="w-3 h-3" />
+                  Clear all filters
+                </motion.button>
+              )}
             </div>
           </motion.div>
         )}
